@@ -144,9 +144,9 @@ This hands-on project helped me understand the foundational services of AWS incl
 
 ---
 ### SCREENSHOTS
-![APACHE]()
-![INSTANCES]()
-![LOADBALANCER]()
+![APACHE](https://github.com/Nifesimi-p/aws-compute-services/blob/main/APACHE.png)
+![INSTANCES](https://github.com/Nifesimi-p/aws-compute-services/blob/main/INSTANCES.png)
+![LOADBALANCER](https://github.com/Nifesimi-p/aws-compute-services/blob/main/LOADBALANCER.png)
 
 
 
