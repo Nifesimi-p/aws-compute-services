@@ -1,10 +1,3 @@
-# aws-compute-services
-Great! Here’s a well-structured, detailed README.md file you can use to document your step-by-step setup process using the AWS Management Console. This README covers the creation of VPC components, EC2, Apache installation, target group, load balancer, auto scaling group, and challenges faced:
-
-⸻
-
-
-
 # AWS EC2 Auto Scaling Setup with Load Balancer and Apache Web Server
 
 This guide documents the step-by-step process I followed to launch an EC2 instance using the AWS Management Console, configure a custom VPC, install Apache, and set up an Auto Scaling Group with a Load Balancer. Everything was done manually using the AWS Console.
@@ -13,16 +6,18 @@ This guide documents the step-by-step process I followed to launch an EC2 instan
 
 ## Table of Contents
 
-1. [Overview](#overview)  
-2. [VPC and Networking Configuration](#vpc-and-networking-configuration)  
-3. [Security Group Configuration](#security-group-configuration)  
-4. [EC2 Launch Template](#ec2-launch-template)  
-5. [Target Group and Load Balancer](#target-group-and-load-balancer)  
-6. [Auto Scaling Group Setup](#auto-scaling-group-setup)  
-7. [Installing Apache Web Server](#installing-apache-web-server)  
-8. [Testing the Setup](#testing-the-setup)  
-9. [Challenges Faced](#challenges-faced)  
-10. [Conclusion](#conclusion)
+- [AWS EC2 Auto Scaling Setup with Load Balancer and Apache Web Server](#aws-ec2-auto-scaling-setup-with-load-balancer-and-apache-web-server)
+	- [Table of Contents](#table-of-contents)
+	- [Overview](#overview)
+	- [VPC and Networking Configuration](#vpc-and-networking-configuration)
+	- [Security Group Configuration](#security-group-configuration)
+	- [EC2 Launch Template](#ec2-launch-template)
+		- [Target Group and Load Balancer](#target-group-and-load-balancer)
+		- [Auto Scaling Group Setup](#auto-scaling-group-setup)
+		- [Installing Apache Web Server](#installing-apache-web-server)
+		- [Challenges Faced](#challenges-faced)
+		- [Conclusion](#conclusion)
+		- [SCREENSHOTS](#screenshots)
 
 ---
 
@@ -71,7 +66,7 @@ The goal of this project was to:
 ## EC2 Launch Template
 
 1. **Create a Launch Template**
-   - Used Amazon Linux 2 AMI.
+   - Used Ubuntu AMI.
    - Configured with the custom security group.
    - Added a user data script to install Apache and serve a simple HTML page.
 
@@ -86,9 +81,9 @@ sudo systemctl restart apache2
 ```
 
 
-⸻
+---
 
-Target Group and Load Balancer
+### Target Group and Load Balancer
 	1.	Create a Target Group
 	•	Type: Instance
 	•	Protocol: HTTP
@@ -100,9 +95,9 @@ Target Group and Load Balancer
 	•	Security group allowed inbound traffic on port 80.
 	•	Listener: Forward traffic to the target group.
 
-⸻
+---
 
-Auto Scaling Group Setup
+### Auto Scaling Group Setup
 	1.	Create an Auto Scaling Group
 	•	Based on the launch template.
 	•	Attached to the created load balancer.
@@ -113,23 +108,23 @@ Auto Scaling Group Setup
 	2.	Scaling Policy
 	•	Default manual policy used initially (no dynamic scaling setup).
 
-⸻
+---
 
-Installing Apache Web Server
+### Installing Apache Web Server
 
 Apache was installed as part of the User Data script in the Launch Template, ensuring that every new EC2 instance created by the Auto Scaling Group is automatically configured as a web server.
 
-⸻
+---
 
-Testing the Setup
+### Testing the Setup
 	•	Visited the Load Balancer DNS name in the browser.
 	•	Verified that the HTML page was served successfully.
 	•	Terminated one EC2 instance and verified that Auto Scaling replaced it.
 	•	Apache remained running and serving traffic after replacement.
 
-⸻
+---
 
-Challenges Faced
+  ### Challenges Faced
 	1.	VPC Misconfiguration
 	•	Initially forgot to associate subnets with the route table — no internet access.
 	2.	Security Group Issues
@@ -141,13 +136,19 @@ Challenges Faced
 	5.	Apache Not Running
 	•	User data script had syntax errors — used #!/bin/bash and tested commands manually before finalizing script.
 
-⸻
+---
 
-Conclusion
+  ### Conclusion
 
 This hands-on project helped me understand the foundational services of AWS including VPC, EC2, Auto Scaling, Load Balancing, and security configurations. I was able to create a scalable, highly available web application setup entirely from the AWS Console.
 
-⸻
+---
+### SCREENSHOTS
+![APACHE]()
+![INSTANCES]()
+![LOADBALANCER]()
+
+
 
 
 
